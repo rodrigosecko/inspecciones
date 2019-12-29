@@ -125,11 +125,23 @@ class ProductosProvider {
 
   Future<int> borrarProducto( String id ) async { 
 
-    final url  = '$_url/productos/$id.json';
+    /*final url  = '$_url/productos/$id.json';
     final resp = await http.delete(url);
 
     print( resp.body );
 
+    return 1;*/
+    //cod nuevo
+      String _urlip='192.168.0.8';
+    final urldos =Uri.http(_urlip, '/CodeigniterPMGM/Restserver/deleteinspeccion/',
+   {                                  
+                 'id'      : id.toString(),
+                  }); 
+
+                final resp = await http.get(urldos);
+
+    final decodedData = json.decode(resp.body);
+    print( decodedData['mensaje'] );
     return 1;
   }
 
