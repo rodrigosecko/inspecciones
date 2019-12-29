@@ -53,8 +53,8 @@ class ProductosProvider {
   }
 
   Future<bool> editarProducto( ProductoModel producto ) async {
-    
-    final url = '$_url/productos/${ producto.id }.json';
+    //codigo antiguo
+    /*final url = '$_url/productos/${ producto.id }.json';
 
     final resp = await http.put( url, body: productoModelToJson(producto) );
 
@@ -62,7 +62,30 @@ class ProductosProvider {
 
     print( decodedData );
 
+    return true;*/
+    //fin de codigo antiguo
+    //codigo para insertar un dato
+    String _urlip='192.168.0.8';
+    //String _urls='pmgm.oopp.gob.bo';
+    print(producto.fotoUrl+'----'+producto.titulo);
+
+   final urldos =Uri.http(_urlip, '/CodeigniterPMGM/Restserver/updateinspeccion/',
+   {                  
+                 'id'      : producto.id,
+                 'titulo'      : producto.titulo,
+                 'valor'      : producto.valor.toString(),
+                 'disponible'      : producto.disponible.toString(),
+                 'fotoUrl'      : producto.fotoUrl, 
+                });    
+       final r = await http.get(urldos);
+
+ 
+    final decodeData =json.decode(r.body);
+    print(decodeData['mensaje']);
+    //Map dataMap = json.decode(r.body);
+      //print(dataMap ['rutas']);
     return true;
+    //fin del codigo
 
   }
 
