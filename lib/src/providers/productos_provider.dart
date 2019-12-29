@@ -70,7 +70,7 @@ class ProductosProvider {
 
   Future<List<ProductoModel>> cargarProductos() async {
 
-    final url  = '$_url/productos.json';
+    /*final url  = '$_url/productos.json';
     final resp = await http.get(url);
 
     final Map<String, dynamic> decodedData = json.decode(resp.body);
@@ -90,7 +90,35 @@ class ProductosProvider {
 
     // print( productos[0].id );
 
-    return productos;
+    return productos;*/
+
+    
+    //codigo nuevo
+    String _urlip='192.168.0.8';
+    final urldos =Uri.http(_urlip, '/CodeigniterPMGM/Restserver/prueba/',
+   {                                  
+                 'id'      : '9',
+                  });  
+                
+  final resp = await http.get(urldos);
+
+    final decodedData = json.decode(resp.body);
+    
+
+
+    if ( decodedData == null ) return [];
+
+    
+
+      final productos = Productos.fromJsonList(decodedData['respuesta']);
+    
+
+  
+
+    // print( productos[0].id );
+
+    return productos.items;
+    //fin de codigo nuevo 
 
   }
 

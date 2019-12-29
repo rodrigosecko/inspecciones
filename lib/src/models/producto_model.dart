@@ -27,8 +27,8 @@ class ProductoModel {
     factory ProductoModel.fromJson(Map<String, dynamic> json) => new ProductoModel(
         id         : json["id"],
         titulo     : json["titulo"],
-        valor      : json["valor"],
-        disponible : json["disponible"],
+        valor      : 0.0 ,
+        disponible : true,
         fotoUrl    : json["fotoUrl"],
     );
 
@@ -39,4 +39,23 @@ class ProductoModel {
         "disponible" : disponible,
         "fotoUrl"    : fotoUrl,
     };
+}
+
+class Productos {
+
+  List<ProductoModel> items = new List();
+
+  Productos();
+
+  Productos.fromJsonList( List<dynamic> jsonList  ) {
+
+    if ( jsonList == null ) return;
+
+    for ( var item in jsonList  ) {
+      final producto = new ProductoModel.fromJson(item);
+      items.add( producto );
+    }
+
+  }
+
 }
