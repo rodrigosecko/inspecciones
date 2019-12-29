@@ -17,7 +17,7 @@ class ProductosProvider {
 
   Future<bool> crearProducto( ProductoModel producto ) async {
     
-    final url = '$_url/productos.json';
+   /* final url = '$_url/productos.json';
 
     final resp = await http.post( url, body: productoModelToJson(producto) );
 
@@ -25,7 +25,30 @@ class ProductosProvider {
 
     print( decodedData );
 
+    return true;*/
+
+    //codigo para insertar un dato
+    String _urlip='192.168.0.8';
+    //String _urls='pmgm.oopp.gob.bo';
+    print(producto.fotoUrl+'----'+producto.titulo);
+
+   final urldos =Uri.http(_urlip, '/CodeigniterPMGM/Restserver/insertainspeccion/',
+   {                  
+                 
+                 'titulo'      : producto.titulo,
+                 'valor'      : producto.valor.toString(),
+                 'disponible'      : producto.disponible.toString(),
+                 'fotoUrl'      : producto.fotoUrl, 
+                });    
+       final r = await http.get(urldos);
+
+ 
+    final decodeData =json.decode(r.body);
+    print(decodeData['mensaje']);
+    //Map dataMap = json.decode(r.body);
+      //print(dataMap ['rutas']);
     return true;
+    //fin del codigo
 
   }
 
