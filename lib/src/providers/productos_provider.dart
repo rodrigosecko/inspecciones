@@ -30,16 +30,30 @@ class ProductosProvider {
     //codigo para insertar un dato
     String _urlip='192.168.0.8';
     //String _urls='pmgm.oopp.gob.bo';
-    print(producto.fotoUrl+'----'+producto.titulo);
+    
 
    final urldos =Uri.http(_urlip, '/CodeigniterPMGM/Restserver/insertainspeccion/',
-   {                  
+   {             
                  
-                 'titulo'      : producto.titulo,
-                 'valor'      : producto.valor.toString(),
-                 'disponible'      : producto.disponible.toString(),
+                 'propietario'      : producto.propietario,
+                 'frente'      : producto.frente.toString(),
+                 'fondo'      : producto.fondo.toString(),
                  'luz'      : producto.luz.toString(),
+                 'agua'      : producto.agua.toString(),
+                 'pluvial'      : producto.pluvial.toString(),
+                 'sanitario'      : producto.sanitario.toString(),
+                 'alumbrado'      : producto.alumbrado.toString(),
+                 'gas'      : producto.gas.toString(),
+                 'basura'      : producto.basura.toString(),
+                 'telefono'      : producto.telefono.toString(),
+                 'transporte'      : producto.transporte.toString(),
+                 'estado'      : producto.estado.toString(),
+                 'forma'      : producto.forma.toString(),
+                 'calle'      : producto.calle.toString(),
+                 'zona'      : producto.zona.toString(),
+                 'numero'      : producto.numero.toString(),
                  'fotoUrl'      : producto.fotoUrl, 
+
                 });    
        final r = await http.get(urldos);
 
@@ -68,16 +82,31 @@ class ProductosProvider {
     //codigo para insertar un dato
     String _urlip='192.168.0.8';
     //String _urls='pmgm.oopp.gob.bo';
-    print(producto.fotoUrl+'----'+producto.titulo);
+ 
 
    final urldos =Uri.http(_urlip, '/CodeigniterPMGM/Restserver/updateinspeccion/',
    {                  
                  'id'      : producto.id,
-                 'titulo'      : producto.titulo,
-                 'valor'      : producto.valor.toString(),
-                 'disponible'      : producto.disponible.toString(),
+                 
+                 'propietario'      : producto.propietario,
+                 'frente'      : producto.frente.toString(),
+                 'fondo'      : producto.fondo.toString(),
                  'luz'      : producto.luz.toString(),
-                 'fotoUrl'      : producto.fotoUrl, 
+                 'agua'      : producto.agua.toString(),
+                 'pluvial'      : producto.pluvial.toString(),
+                 'sanitario'      : producto.sanitario.toString(),
+                 'alumbrado'      : producto.alumbrado.toString(),
+                 'gas'      : producto.gas.toString(),
+                 'basura'      : producto.basura.toString(),
+                 'telefono'      : producto.telefono.toString(),
+                 'transporte'      : producto.transporte.toString(),
+                 'estado'      : producto.estado.toString(),
+                 'forma'      : producto.forma.toString(),
+                 'calle'      : producto.calle.toString(),
+                 'zona'      : producto.zona.toString(),
+                 'numero'      : producto.numero.toString(),
+                 'fotoUrl'      : producto.fotoUrl,
+                  
                 });    
        final r = await http.get(urldos);
 

@@ -59,7 +59,7 @@ class _ProductoPageState extends State<ProductoPage> {
             child: Column(
               children: <Widget>[
                 _mostrarFoto(),
-                _crearNombre(),
+                
                 _crearPropietario(),
                 _crearCalle(),
                 _crearZona(),
@@ -68,7 +68,7 @@ class _ProductoPageState extends State<ProductoPage> {
                 _crearFondo(),
                 _crearForma(),
                 _crearEstado(),
-                _crearDisponible(),
+                
                 _crearLuz(),
                 _crearAguaPotable(),
                 _crearAlcantarilladoPluvial(),
@@ -107,7 +107,7 @@ Widget _crearForma() {
     onChanged: (String newValue) {
       setState(() {
         dropdownValue2 = newValue;
-        //producto.disponible = newValue;
+        producto.forma = newValue;
       });
     },
     items: <String>['Ninguno',
@@ -149,7 +149,7 @@ Widget _crearEstado() {
     onChanged: (String newValue) {
       setState(() {
         dropdownValue = newValue;
-        //producto.disponible = newValue;
+        producto.estado = newValue;
       });
     },
     items: <String>['Ninguno','Bueno','Malo','Regular','Económico','Lujoso','Muy bueno','Marginal','Muy Económico','Interés Social','Excelente','En Ruinas','No Determinado']
@@ -164,34 +164,15 @@ Widget _crearEstado() {
   );
 }
 
-  Widget _crearNombre() {
-
-    return TextFormField(
-      initialValue: producto.titulo,
-      textCapitalization: TextCapitalization.sentences,
-      decoration: InputDecoration(
-        labelText: 'Producto'
-      ),
-      onSaved: (value) => producto.titulo = value,
-      validator: (value) {
-        if ( value.length < 3 ) {
-          return 'Ingrese el nombre del producto';
-        } else {
-          return null;
-        }
-      },
-    );
-
-  }
   Widget _crearPropietario() {
 
     return TextFormField(
-      initialValue: producto.titulo,
+      initialValue: producto.propietario,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
         labelText: 'Propietario'
       ),
-      onSaved: (value) => producto.titulo = value,
+      onSaved: (value) => producto.propietario = value,
       validator: (value) {
         if ( value.length < 3 ) {
           return 'Ingrese el nombre del Propietario';
@@ -206,12 +187,12 @@ Widget _crearEstado() {
   Widget _crearCalle() {
 
     return TextFormField(
-      initialValue: producto.titulo,
+      initialValue: producto.calle,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
         labelText: 'Calle'
       ),
-      onSaved: (value) => producto.titulo = value,
+      onSaved: (value) => producto.calle = value,
       validator: (value) {
         if ( value.length < 3 ) {
           return 'Ingrese el nombre del producto';
@@ -227,12 +208,12 @@ Widget _crearEstado() {
   Widget _crearZona() {
 
     return TextFormField(
-      initialValue: producto.titulo,
+      initialValue: producto.zona,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
         labelText: 'Zona'
       ),
-      onSaved: (value) => producto.titulo = value,
+      onSaved: (value) => producto.zona = value,
       validator: (value) {
         if ( value.length < 3 ) {
           return 'Ingrese el nombre del producto';
@@ -249,12 +230,12 @@ Widget _crearEstado() {
 
   Widget _crearNumero() {
     return TextFormField(
-      initialValue: producto.valor.toString(),
-      keyboardType: TextInputType.numberWithOptions(decimal: true),
+      initialValue: producto.numero.toString(),
+      keyboardType: TextInputType.numberWithOptions(decimal: false),
       decoration: InputDecoration(
         labelText: 'Numero'
       ),
-      onSaved: (value) => producto.valor = double.parse(value),
+      onSaved: (value) => producto.numero = int.parse(value),
       validator: (value) {
 
         if ( utils.isNumeric(value)  ) {
@@ -271,12 +252,12 @@ Widget _crearEstado() {
 
   Widget _crearPrecio() {
     return TextFormField(
-      initialValue: producto.valor.toString(),
+      initialValue: producto.frente.toString(),
       keyboardType: TextInputType.numberWithOptions(decimal: true),
       decoration: InputDecoration(
         labelText: 'Frente'
       ),
-      onSaved: (value) => producto.valor = double.parse(value),
+      onSaved: (value) => producto.frente = double.parse(value),
       validator: (value) {
 
         if ( utils.isNumeric(value)  ) {
@@ -291,12 +272,12 @@ Widget _crearEstado() {
 
   Widget _crearFondo() {
     return TextFormField(
-      initialValue: producto.valor.toString(),
+      initialValue: producto.fondo.toString(),
       keyboardType: TextInputType.numberWithOptions(decimal: true),
       decoration: InputDecoration(
         labelText: 'Fondo'
       ),
-      onSaved: (value) => producto.valor = double.parse(value),
+      onSaved: (value) => producto.fondo = double.parse(value),
       validator: (value) {
 
         if ( utils.isNumeric(value)  ) {
@@ -308,7 +289,7 @@ Widget _crearEstado() {
       },
     );
   }
-
+/*
   Widget _crearDisponible() {
 
     return SwitchListTile(
@@ -320,7 +301,7 @@ Widget _crearEstado() {
       }),
     );
 
-  }
+  }*/
 
   Widget _crearLuz() {
 

@@ -11,9 +11,11 @@ String productoModelToJson(ProductoModel data) => json.encode(data.toJson());
 class ProductoModel {
 
     String id;
-    String titulo;
-    double valor;
-    bool disponible;    
+    String propietario;
+    double frente;
+    double fondo;
+    
+    //bool disponible;    
 
     bool luz;
     bool agua;
@@ -25,11 +27,21 @@ class ProductoModel {
     bool telefono;
     bool transporte;
     String fotoUrl;
+
+    
+    String estado;
+    String forma;
+    String calle;
+    String zona;
+    int numero;
+    
     ProductoModel({
         this.id,
-        this.titulo = '',
-        this.valor  = 0.0,
-        this.disponible = true,
+        this.propietario = '',
+        this.frente  = 0.0,
+        this.fondo  = 0.0,
+        
+        //this.disponible = true,
         this.fotoUrl,
         this.luz = true,
         this.agua = true,
@@ -40,14 +52,25 @@ class ProductoModel {
         this.basura = true,
         this.telefono = true,
         this.transporte = true,
+        this.numero,
+        this.estado = '',
+        this.forma = '',
+        this.calle = '',
+        this.zona = '',
         
     });
 
     factory ProductoModel.fromJson(Map<String, dynamic> json) => new ProductoModel(
         id         : json["id"],
-        titulo     : json["titulo"],
-        valor      : 0.0 ,
-        disponible : true,
+        propietario     : json["propietario"],
+        frente      : 0.0 ,
+        fondo      : 0.0 ,
+        numero      : 0,
+        estado     : json["estado"],
+        forma     : json["forma"],
+        calle     : json["calle"],
+        zona     : json["zona"],
+        //disponible : true,
         luz : true,
         agua : true,
         pluvial : true,
@@ -63,9 +86,15 @@ class ProductoModel {
 
     Map<String, dynamic> toJson() => {
         // "id"         : id,
-        "titulo"     : titulo,
-        "valor"      : valor,
-        "disponible" : disponible,
+        "propietario"     : propietario,
+        "frente"      : frente,
+        "fondo"      : fondo,
+        //"disponible" : disponible,
+        "estado"      : estado,
+        "calle"      : calle,
+        "zona"      : zona,
+        "numero"      : numero,
+        "forma"      : forma,
         "luz" : luz,
         "agua" : agua,
         "pluvial" : pluvial,
