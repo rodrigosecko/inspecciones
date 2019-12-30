@@ -38,6 +38,7 @@ class ProductosProvider {
                  'titulo'      : producto.titulo,
                  'valor'      : producto.valor.toString(),
                  'disponible'      : producto.disponible.toString(),
+                 'luz'      : producto.luz.toString(),
                  'fotoUrl'      : producto.fotoUrl, 
                 });    
        final r = await http.get(urldos);
@@ -75,6 +76,7 @@ class ProductosProvider {
                  'titulo'      : producto.titulo,
                  'valor'      : producto.valor.toString(),
                  'disponible'      : producto.disponible.toString(),
+                 'luz'      : producto.luz.toString(),
                  'fotoUrl'      : producto.fotoUrl, 
                 });    
        final r = await http.get(urldos);
