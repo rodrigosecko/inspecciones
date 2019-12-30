@@ -12,8 +12,8 @@ class ProductoModel {
 
     String id;
     String propietario;
-    double frente;
-    double fondo;
+    String frente;
+    String fondo;
     
     //bool disponible;    
 
@@ -33,13 +33,13 @@ class ProductoModel {
     String forma;
     String calle;
     String zona;
-    int numero;
+    String numero;
     
     ProductoModel({
         this.id,
         this.propietario = '',
-        this.frente  = 0.0,
-        this.fondo  = 0.0,
+        this.frente  = '0.0',
+        this.fondo  = '0.0',
         
         //this.disponible = true,
         this.fotoUrl,
@@ -52,9 +52,9 @@ class ProductoModel {
         this.basura = true,
         this.telefono = true,
         this.transporte = true,
-        this.numero,
-        this.estado = '',
-        this.forma = '',
+        this.numero ='0',
+        this.estado = 'Ninguno',
+        this.forma = 'Ninguno',
         this.calle = '',
         this.zona = '',
         
@@ -63,9 +63,9 @@ class ProductoModel {
     factory ProductoModel.fromJson(Map<String, dynamic> json) => new ProductoModel(
         id         : json["id"],
         propietario     : json["propietario"],
-        frente      : 0.0 ,
-        fondo      : 0.0 ,
-        numero      : 0,
+        frente      : json["frente"],
+        fondo      : json["fondo"],
+        numero      : json["numero"],
         estado     : json["estado"],
         forma     : json["forma"],
         calle     : json["calle"],
@@ -73,12 +73,12 @@ class ProductoModel {
         //disponible : true,
         luz : true,
         agua : true,
-        pluvial : true,
+        pluvial : false,
         sanitario : true,
         alumbrado : true,
-        gas : true,
+        gas : false,
         basura : true,
-        telefono : true,
+        telefono : false,
         transporte : true,
 
         fotoUrl    : json["fotoUrl"],

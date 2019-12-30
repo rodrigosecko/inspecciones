@@ -21,6 +21,8 @@ class _ProductoPageState extends State<ProductoPage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final productoProvider = new ProductosProvider();
 
+  
+
   String dropdownValue = 'Ninguno';
   String dropdownValue2 = 'Ninguno';
 
@@ -66,8 +68,38 @@ class _ProductoPageState extends State<ProductoPage> {
                 _crearNumero(),
                 _crearPrecio(),//frente
                 _crearFondo(),
-                _crearForma(),
-                _crearEstado(),
+                
+                new FormField(
+                    builder: (FormFieldState state) {
+                      return InputDecorator(
+                        decoration: InputDecoration(
+                          
+                          labelText: 'Forma',
+                        ),
+                        
+                        child: new DropdownButtonHideUnderline(
+                          child:  _crearForma(),
+                        ),
+                      );
+                    },
+                  ),
+                new FormField(
+                    builder: (FormFieldState state) {
+                      return InputDecorator(
+                        decoration: InputDecoration(
+                          
+                          labelText: 'Estado',
+                        ),
+                        
+                        child: new DropdownButtonHideUnderline(
+                          child:  _crearEstado(),
+                        ),
+                      );
+                    },
+                  ),
+
+                //_crearForma(),
+                //_crearEstado(),
                 
                 _crearLuz(),
                 _crearAguaPotable(),
@@ -93,7 +125,7 @@ class _ProductoPageState extends State<ProductoPage> {
 
 Widget _crearForma() {
   return DropdownButton<String>(
-    value: dropdownValue2,
+    value: producto.forma,
     //icon: Icon(Icons.arrow_downward),
     iconSize: 24,
     elevation: 16,
@@ -135,7 +167,7 @@ Widget _crearForma() {
 
 Widget _crearEstado() {
   return DropdownButton<String>(
-    value: dropdownValue,
+    value: producto.estado,
     //icon: Icon(Icons.arrow_downward),
     iconSize: 24,
     elevation: 16,
@@ -235,7 +267,7 @@ Widget _crearEstado() {
       decoration: InputDecoration(
         labelText: 'Numero'
       ),
-      onSaved: (value) => producto.numero = int.parse(value),
+      onSaved: (value) => producto.numero = value,
       validator: (value) {
 
         if ( utils.isNumeric(value)  ) {
@@ -257,7 +289,7 @@ Widget _crearEstado() {
       decoration: InputDecoration(
         labelText: 'Frente'
       ),
-      onSaved: (value) => producto.frente = double.parse(value),
+      onSaved: (value) => producto.frente = value,
       validator: (value) {
 
         if ( utils.isNumeric(value)  ) {
@@ -277,7 +309,7 @@ Widget _crearEstado() {
       decoration: InputDecoration(
         labelText: 'Fondo'
       ),
-      onSaved: (value) => producto.fondo = double.parse(value),
+      onSaved: (value) => producto.fondo = value,
       validator: (value) {
 
         if ( utils.isNumeric(value)  ) {
